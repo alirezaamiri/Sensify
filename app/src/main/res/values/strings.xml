@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="finding_service">Finding local services</string>
+    <string name="btn_sensify">Sensify</string>
+    <string name="btn_discovery">Reset Discovery</string>
+    <string name="txt_hint">Type Message</string>
+    <string name="app_name">Sensify</string>
+    <string name="number_of_peers_string">Peers : %1$d</string>
+
+    <string name="setting_text">Permission to send the data of sensors:</string>
+    <string name="btn_stop_discovery">Stop Disc.</string>
+    <string name="btn_start_discovery">Start Disc.</string>
+
+</resources>

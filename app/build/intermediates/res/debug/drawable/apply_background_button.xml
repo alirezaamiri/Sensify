@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:state_pressed="true" >
+        <shape android:shape="rectangle"  >
+            <corners android:radius="3dip" />
+            <stroke android:width="1dip" android:color="#ff6ac51e" />
+            <gradient  android:angle="-90"  android:startColor="#ff2ea106" android:endColor="#ff3ad60e"  />
+        </shape>
+    </item>
+    <item android:state_focused="true">
+        <shape android:shape="rectangle"  >
+            <corners android:radius="3dip" />
+            <stroke android:width="1dip" android:color="#ff49c534" />
+            <solid  android:color="#ff35e026"/>
+        </shape>
+    </item>
+    <item >
+        <shape android:shape="rectangle"  >
+            <corners android:radius="3dip" />
+            <stroke android:width="1dip" android:color="#ff36c530" />
+            <gradient  android:angle="-90"  android:startColor="#ff4fff71" android:endColor="#ff1fe022" />
+        </shape>
+    </item>
+</selector><!-- From: file:/C:/Users/Alireza/Desktop/Backup/sample/app/src/main/res/drawable/apply_background_button.xml -->
