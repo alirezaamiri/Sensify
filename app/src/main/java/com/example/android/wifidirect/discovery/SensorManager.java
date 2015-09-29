@@ -1,7 +1,5 @@
 package com.example.android.wifidirect.discovery;
 
-import android.app.Activity;
-import android.content.Context;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -11,13 +9,13 @@ import android.hardware.SensorEventListener;
  */
 public class SensorManager implements SensorEventListener {
 
-    private WiFiServiceDiscoveryActivity activity;
+    private SensifyMainActivity activity;
     private android.hardware.SensorManager sensorManager;
     private Sensor lightSensor;
 
     private float lux;
 
-    public SensorManager(WiFiServiceDiscoveryActivity c){
+    public SensorManager(SensifyMainActivity c){
         this.activity = c;
         lux = 0;
 

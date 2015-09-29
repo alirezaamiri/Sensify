@@ -31,12 +31,17 @@ public class ClientSocketHandler extends Thread {
             if (socket.isConnected()) socket.close();
             socket.bind(null);
             socket.connect(new InetSocketAddress(mAddress.getHostAddress(),
-                    WiFiServiceDiscoveryActivity.SERVER_PORT), 5000);
+                    SensifyMainActivity.SERVER_PORT), 5000);
+
+            if(!socket.isConnected()){
+                socket.connect(new InetSocketAddress(mAddress.getHostAddress(),
+                        4546), 5000);
+            }
             Log.d(TAG, "Launching the I/O handler");
             chat = new MessageManager(socket, handler,isSender);
             new Thread(chat).start();
 
-//            handler.obtainMessage(WiFiServiceDiscoveryActivity.SEND_NEEDED_SENSORS,chat).sendToTarget();
+//            handler.obtainMessage(SensifyMainActivity.SEND_NEEDED_SENSORS,chat).sendToTarget();
 //            Log.d(TAG, "message sent "+((chat==null)?"null":"not null"));
         } catch (IOException e) {
             e.printStackTrace();

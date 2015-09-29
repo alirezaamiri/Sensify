@@ -25,7 +25,7 @@ public class SettingActivity extends Activity {
         setContentView(R.layout.setting);
 
         Intent intent = getIntent();
-        boolean sound = intent.getBooleanExtra("sound", true); //if it's a string you stored.
+        boolean sound = intent.getBooleanExtra("sound", true);
         boolean light = intent.getBooleanExtra("light", true);
         final boolean proximity = intent.getBooleanExtra("proximity",true);
 

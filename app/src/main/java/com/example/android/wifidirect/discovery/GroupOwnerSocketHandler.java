@@ -45,22 +45,27 @@ public class GroupOwnerSocketHandler extends Thread {
      * A ThreadPool for client sockets.
      */
     private final ThreadPoolExecutor pool = new ThreadPoolExecutor(
-            THREAD_COUNT, THREAD_COUNT, 10, TimeUnit.SECONDS,
+            THREAD_COUNT, THREAD_COUNT, 1000, TimeUnit.SECONDS,
             new LinkedBlockingQueue<Runnable>());
 
     @Override
     public void run() {
         while (true) {
             try {
-                socket.setReuseAddress(true);
-                socket.bind(new InetSocketAddress(4545));
+                i++;
+                try{
+                    socket.setReuseAddress(true);
+                    socket.bind(new InetSocketAddress(4545));
+                }catch(Exception e){
+                    socket.setReuseAddress(true);
+                    socket.bind(new InetSocketAddress(4546));
+                }
+
                 // A blocking operation. Initiate a ChatManager instance when
                 // there is a new connection
-                Log.d(TAG, "Launching the I/O handler"+i);
+                Log.d(TAG, "Launching the I/O handler" + i);
                 pool.submit(new MessageManager(socket.accept(), handler, true));
 //                pool.execute(new MessageManager(socket.accept(), handler,true));// it is the sender
-
-
 
             } catch (IOException e) {
                 try {

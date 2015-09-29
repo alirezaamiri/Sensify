@@ -40,7 +40,7 @@ public class MessageManager implements Runnable {
             bufferSend = buffer;
             int bytes;
             if (sendData)
-                handler.obtainMessage(WiFiServiceDiscoveryActivity.SEND_NEEDED_SENSORS, this).sendToTarget();
+                handler.obtainMessage(SensifyMainActivity.SEND_NEEDED_SENSORS, this).sendToTarget();
 
             while (true) {
                 try {
@@ -52,7 +52,7 @@ public class MessageManager implements Runnable {
 
                     // Send the obtained bytes to the UI Activity
                     Log.d(TAG, "Rec:" + new String(bufferSend, 0, bytes));
-                    handler.obtainMessage(WiFiServiceDiscoveryActivity.MESSAGE_READ,
+                    handler.obtainMessage(SensifyMainActivity.MESSAGE_READ,
                             bytes, -1, this).sendToTarget();
                     String temp = new String(bufferSend, 0, bytes);
                     if (temp.contains("done"))
