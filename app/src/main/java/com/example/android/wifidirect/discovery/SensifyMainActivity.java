@@ -17,7 +17,6 @@ import android.net.wifi.p2p.WifiP2pManager;
 import android.net.wifi.p2p.WifiP2pManager.ActionListener;
 import android.net.wifi.p2p.WifiP2pManager.Channel;
 import android.net.wifi.p2p.WifiP2pManager.ConnectionInfoListener;
-import android.net.wifi.p2p.nsd.WifiP2pDnsSdServiceInfo;
 import android.os.Bundle;
 
 import android.os.Handler;
@@ -43,9 +42,7 @@ import java.nio.charset.Charset;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Locale;
-import java.util.Map;
 
 
 
@@ -223,7 +220,6 @@ public class SensifyMainActivity extends Activity implements
                     wifiConnectivity.createGroup();
                     wifiConnectivity.stopDiscovery();
                     resetDiscoveryHandler.removeMessages(0);
-//                    connectP2p(deviceList.get(0));
                 }
             }
         });
@@ -276,7 +272,6 @@ public class SensifyMainActivity extends Activity implements
                     appendStatus("result : " + dataHelper.beautifyResult(readMessage));
                     messageManager.write("done".getBytes(Charset.forName("UTF-8")));
                     Log.d("sensify","result received");
-//                    deviceList.remove(0);
                     if (peerNumber == peerNumberCounter) { // it means we get data from all peers
                         manager.removeGroup(channel, new ActionListener() {
                             @Override

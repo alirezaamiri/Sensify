@@ -46,6 +46,7 @@ public class WifiConnectivity {
         managerFinal = manager;
         channelFinal = channel;
         this.numberOfPeersTxtView = numberOfPeersDiscovery;
+        deviceList = new ArrayList<WiFiP2pService>();
 
         resetDiscoveryHandler = new Handler(){
             @Override
