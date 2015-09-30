@@ -17,12 +17,14 @@ public class ClientSocketHandler extends Thread {
     private InetAddress mAddress;
     private boolean isSender;
     private Socket socket;
+    private int i;
 
     public ClientSocketHandler(Handler handler, InetAddress groupOwnerAddress, boolean isSender) {
         this.handler = handler;
         this.isSender = isSender;
         this.mAddress = groupOwnerAddress;
         this.socket = new Socket();
+        i = 1;
     }
 
     @Override
@@ -33,9 +35,10 @@ public class ClientSocketHandler extends Thread {
             socket.connect(new InetSocketAddress(mAddress.getHostAddress(),
                     SensifyMainActivity.SERVER_PORT), 5000);
 
-            if(!socket.isConnected()){
+            while (!socket.isConnected()){
                 socket.connect(new InetSocketAddress(mAddress.getHostAddress(),
-                        4546), 5000);
+                        SensifyMainActivity.SERVER_PORT+i), 5000);
+                i++;
             }
             Log.d(TAG, "Launching the I/O handler");
             chat = new MessageManager(socket, handler,isSender);

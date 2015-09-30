@@ -52,15 +52,15 @@ public class GroupOwnerSocketHandler extends Thread {
     public void run() {
         while (true) {
             try {
-                i++;
+
                 try{
                     socket.setReuseAddress(true);
-                    socket.bind(new InetSocketAddress(4545));
+                    socket.bind(new InetSocketAddress(4545+i));
                 }catch(Exception e){
-                    socket.setReuseAddress(true);
-                    socket.bind(new InetSocketAddress(4546));
+                    i++;
+                    continue;
                 }
-
+                i++;
                 // A blocking operation. Initiate a ChatManager instance when
                 // there is a new connection
                 Log.d(TAG, "Launching the I/O handler" + i);
