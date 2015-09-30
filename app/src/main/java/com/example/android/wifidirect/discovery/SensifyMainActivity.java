@@ -94,8 +94,6 @@ public class SensifyMainActivity extends Activity implements
     private boolean sendData = false;
 
     private MessageManager messageManager;
-    private Handler resetDiscoveryHandler;
-
 
     private int roomNumber;
     private int peerNumber;
@@ -170,13 +168,13 @@ public class SensifyMainActivity extends Activity implements
             @Override
             public void onClick(View view) {
                 wifiConnectivity.stopDiscovery();
-                resetDiscoveryHandler.removeMessages(0);//for stoping discovery
+                wifiConnectivity.removeResetHandler();//for stoping discovery
             }
         });
         startDiscoveryBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                resetDiscoveryHandler.sendEmptyMessage(0);//for starting discovery
+                wifiConnectivity.startResetHandler();//for starting discovery
             }
         });
 
@@ -219,7 +217,7 @@ public class SensifyMainActivity extends Activity implements
                     peerNumber = wifiConnectivity.getDeviceListSize();
                     wifiConnectivity.createGroup();
                     wifiConnectivity.stopDiscovery();
-                    resetDiscoveryHandler.removeMessages(0);
+                    wifiConnectivity.removeResetHandler();
                 }
             }
         });

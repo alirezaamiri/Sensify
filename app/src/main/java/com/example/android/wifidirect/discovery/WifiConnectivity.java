@@ -81,7 +81,7 @@ public class WifiConnectivity {
 
                         // A service has been discovered. Is this our app?
                         if (instanceName.equalsIgnoreCase(SERVICE_INSTANCE)) {
-                            // update the UI and add the item the discovered
+                            // Add the item the discovered
                             // device.
                             WiFiP2pService service = new WiFiP2pService();
                             service.device = srcDevice;
@@ -93,7 +93,7 @@ public class WifiConnectivity {
                             }
                             Log.d(TAG, "onBonjourServiceAvailable "
                                     + instanceName);
-                        } else if (instanceName.equalsIgnoreCase(SENDER_INSTANCE)) {
+                        } else if (instanceName.equalsIgnoreCase(SENDER_INSTANCE)) { // A group owner has been found
                             WiFiP2pService service = new WiFiP2pService();
                             service.device = srcDevice;
                             service.instanceName = instanceName;
@@ -270,6 +270,7 @@ public class WifiConnectivity {
         });
     }
 
+
     public ArrayList<WiFiP2pService> getDeviceList(){
         return deviceList;
     }
@@ -282,12 +283,16 @@ public class WifiConnectivity {
         return deviceList.size();
     }
 
-    public void emptyDeviceList(){
-
-    }
-
     public boolean isDeviceListEmpty(){
         return deviceList.isEmpty();
+    }
+
+    public void removeResetHandler(){
+        resetDiscoveryHandler.removeMessages(0);
+    }
+
+    public void startResetHandler(){
+        resetDiscoveryHandler.sendEmptyMessage(0);
     }
 
 }
